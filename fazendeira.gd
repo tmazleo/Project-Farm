@@ -6,6 +6,8 @@ const JUMP_VELOCITY = -400.0
 
 
 func _physics_process(delta: float) -> void:
+	$"../../UI_layer/Semente_tomate".text = str("sementes de tomate: ",Data.sementes)
+	
 	# Add the gravity.
 	if not is_on_floor():
 		pass
@@ -29,3 +31,7 @@ func _physics_process(delta: float) -> void:
 		$AnimatedSprite2D.play("andando_tras")
 	if Input.is_action_just_pressed("ui_right"):
 		$AnimatedSprite2D.play("andando_frente")
+
+
+func _on_sementes_body_entered(body: Node2D) -> void:
+	Data.sementes += 5
